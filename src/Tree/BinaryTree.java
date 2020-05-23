@@ -3,9 +3,11 @@ package Tree;
 public class BinaryTree { // Arbol binario
     public Node root;
 
-    public BinaryTree(){root = null; } // Constructor por default
+    public BinaryTree() {
+        root = null;
+    } // Constructor por default
 
-    public Node searchNode(int value, Node aux){
+    public Node searchNode(int value, Node aux) {
         if (aux != null) {
             if (aux.data == value) // Cuando se encuentra retornamos el nodo
                 return aux;
@@ -15,9 +17,8 @@ public class BinaryTree { // Arbol binario
                 else // Lo busca por la derecha
                     return searchNode(value, aux.rightNode);
             }
-        }
-        else
-         return null; // Si no lo encuentra retornamos null
+        } else
+            return null; // Si no lo encuentra retornamos null
     }
 
     public void insertNode(int value, Node aux) {
@@ -39,21 +40,32 @@ public class BinaryTree { // Arbol binario
         }
     }
 
-    public void deleteNode(int value){
+    public void deleteNode(int value) {
 
     }
 
-    public void print(Node aux){ // Imprime nodo por nodo con sus dos hijos
-        if (aux.leftNode!= null && aux.rightNode != null)
-            System.out.println(aux + ": " + aux.leftNode + ", " + aux.rightNode);
-        if (aux.leftNode!= null && aux.rightNode == null)
-            System.out.println(aux + ": " + aux.leftNode + ", none");
-        if (aux.leftNode== null && aux.rightNode != null)
-            System.out.println(aux + ": " + "none ," + aux.rightNode);
-        if (aux.leftNode != null){
-            print(aux.leftNode);
+    public void preorden(Node raiz) {
+        if (raiz != null) {
+            System.out.print(raiz.data + ", ");
+            preorden(raiz.leftNode);
+            preorden(raiz.rightNode);
         }
-        if (aux.rightNode != null){
+    }
+
+    public void inorden(Node raiz) {
+        if (raiz != null) {
+            inorden(raiz.leftNode);
+            System.out.print(raiz.data + ", ");
+            inorden(raiz.rightNode);
+        }
+    }
+
+    public void print(Node aux){ // Imprime nodo por nodo con sus dos hijos
+        if (aux != null) {
+            if (aux.leftNode != null || aux.rightNode != null)  //Solo imprime hijos si tiene al menos uno
+                System.out.println(aux + ": " + aux.leftNode + ", " + aux.rightNode);
+
+            print(aux.leftNode);
             print(aux.rightNode);
         }
     }

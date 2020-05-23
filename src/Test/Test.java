@@ -6,7 +6,7 @@ public class Test {
     public static void main (String [] args) {
 
         BinaryTree abb = new BinaryTree();
-        int option = 0;
+        int option;
         int value;
         Scanner in = new Scanner(System.in);
         boolean running = true;
@@ -48,12 +48,17 @@ public class Test {
                     break;
 
                 case 5:
+
                     break;
 
                 case 6:
+                    System.out.println("Recorrido preorden:");
+                    abb.preorden(abb.root);
                     break;
 
                 case 7:
+                    System.out.println("Recorrido inorden:");
+                    abb.inorden(abb.root);
                     break;
 
                 case 8:
