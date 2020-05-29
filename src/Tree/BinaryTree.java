@@ -60,6 +60,14 @@ public class BinaryTree { // Arbol binario
         }
     }
 
+    public void inordenConverso(Node raiz) {
+        if (raiz != null) {
+            inorden(raiz.rightNode);
+            System.out.println(raiz.data + ", ");
+            inorden(raiz.leftNode);
+        }
+    }
+
     public void print(Node aux, int counter) { //imprimir arbol completo
         if (aux != null) {
             print(aux.rightNode, counter+1);
