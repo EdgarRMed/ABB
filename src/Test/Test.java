@@ -70,6 +70,9 @@ public class Test {
                     break;
 
                 case 10:
+                    System.out.println("Recorrido inorden converso:");
+                    abb.inordenConverso(abb.root);
+                    System.out.println();
                     break;
 
                 case 11:
