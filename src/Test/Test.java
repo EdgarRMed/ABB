@@ -54,11 +54,13 @@ public class Test {
                 case 6:
                     System.out.println("Recorrido preorden:");
                     abb.preorden(abb.root);
+                    System.out.println();
                     break;
 
                 case 7:
                     System.out.println("Recorrido inorden:");
                     abb.inorden(abb.root);
+                    System.out.println();
                     break;
 
                 case 8:
@@ -76,7 +78,7 @@ public class Test {
                     break;
 
                 case 13:
-                    abb.print(abb.root);
+                    abb.print(abb.root, 0);
                     break;
 
                 case 14:

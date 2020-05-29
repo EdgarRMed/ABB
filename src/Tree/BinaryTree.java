@@ -60,13 +60,14 @@ public class BinaryTree { // Arbol binario
         }
     }
 
-    public void print(Node aux){ // Imprime nodo por nodo con sus dos hijos
+    public void print(Node aux, int counter) { //imprimir arbol completo
         if (aux != null) {
-            if (aux.leftNode != null || aux.rightNode != null)  //Solo imprime hijos si tiene al menos uno
-                System.out.println(aux + ": " + aux.leftNode + ", " + aux.rightNode);
-
-            print(aux.leftNode);
-            print(aux.rightNode);
+            print(aux.rightNode, counter+1);
+            for (int i = 0; i < counter; i++) {
+                System.out.print("       ");
+            }
+            System.out.println(aux.data);
+            print(aux.leftNode, counter+1);
         }
     }
 
