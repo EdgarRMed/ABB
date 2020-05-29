@@ -1,6 +1,8 @@
 package Tree;
 
-public class BinaryTree { // Arbol binario
+import java.io.Serializable;
+
+public class BinaryTree implements Serializable { // Arbol binario
     public Node root;
 
     public BinaryTree() {
@@ -60,11 +62,27 @@ public class BinaryTree { // Arbol binario
         }
     }
 
+    public void postorden(Node aux){
+        if (aux != null){
+            postorden(aux.leftNode);
+            postorden(aux.rightNode);
+            System.out.print(aux.data + ", ");
+        }
+    }
+
     public void inordenConverso(Node raiz) {
         if (raiz != null) {
             inorden(raiz.rightNode);
-            System.out.println(raiz.data + ", ");
+            System.out.print(raiz.data + ", ");
             inorden(raiz.leftNode);
+        }
+    }
+
+    public void postordenConverso(Node aux){
+        if (aux != null){
+            postorden(aux.rightNode);
+            postorden(aux.leftNode);
+            System.out.print(aux.data + ", ");
         }
     }
 

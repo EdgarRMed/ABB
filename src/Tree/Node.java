@@ -1,6 +1,8 @@
 package Tree;
 
-public class Node {
+import java.io.Serializable;
+
+public class Node implements Serializable {
 
     public int data;
     protected Node leftNode;

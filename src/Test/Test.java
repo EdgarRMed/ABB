@@ -1,13 +1,16 @@
 package Test;
 import Tree.BinaryTree;
+
+import java.io.*;
 import java.util.Scanner;
 
 public class Test {
-    public static void main (String [] args) {
+    public static void main (String [] args) throws IOException {
 
         BinaryTree abb = new BinaryTree();
         int option;
         int value;
+        String fileName;
         Scanner in = new Scanner(System.in);
         boolean running = true;
 
@@ -25,6 +28,24 @@ public class Test {
                     break;
 
                 case 1:
+                    try {
+                        System.out.println("Ingrese el nombre de un archivo(Elemplo: abb)");
+                        fileName = in.nextLine();
+                        FileInputStream entrada = new FileInputStream("Arboles/" + fileName +".txt");
+                        ObjectInputStream reader = new ObjectInputStream(entrada);
+                        //Lectura de objeto
+                        System.out.println("------------ Contenido de "+fileName+".txt ---------------");
+                        abb = (BinaryTree) reader.readObject();
+                        abb.print(abb.root, 0);
+                    }
+                    catch (java.io.InvalidClassException e){
+                        System.out.println("\nNo hay archivos disponibles o el archivo se ha corrompido\n");
+                    }
+                    catch (java.io.FileNotFoundException ex){
+                        System.out.println("No existe el archivo");
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
                     break;
 
                 case 2:
@@ -64,6 +85,9 @@ public class Test {
                     break;
 
                 case 8:
+                    System.out.println("Recorrido en postorden:");
+                    abb.postorden(abb.root);
+                    System.out.println();
                     break;
 
                 case 9:
@@ -76,6 +100,9 @@ public class Test {
                     break;
 
                 case 11:
+                    System.out.println("Recorrido en postorden converso:");
+                    abb.postordenConverso(abb.root);
+                    System.out.println();
 
                 case 12:
                     break;
@@ -86,6 +113,18 @@ public class Test {
 
                 case 14:
                     running = false;
+                    break;
+
+                case 15:
+                    System.out.println("Nombre del archivo:");
+                    fileName = in.nextLine();
+                    File abbTxt = new File("Arboles/"+fileName+".txt");
+                    FileOutputStream fileOS = new FileOutputStream(abbTxt); // Se pasa el archivo
+                    ObjectOutputStream objectOS = new ObjectOutputStream(fileOS);
+                    objectOS.writeObject(abb); // Se esecribe
+                    objectOS.close(); // Se cierra el archivo
+                    System.out.println("Se guardó correctamente" + fileName);
+                    System.out.println();
                     break;
 
                 default:
@@ -110,5 +149,6 @@ public class Test {
         System.out.println("12.Guardar como");
         System.out.println("13. Imprimir el árbol");
         System.out.println("14. Salir");
+        System.out.println("15. Guardar como");
     }
 }
