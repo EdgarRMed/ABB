@@ -56,6 +56,16 @@ public class Test {
                     break;
 
                 case 3:
+                    if(!abb.vacia()){
+                        System.out.println("Valor a eliminar: ");
+                        value = in.nextInt();
+                        if(abb.deleteNode(value)==false){
+                            System.out.println("El elemento no se encuentra en el árbol");
+                        }else
+                            System.out.println("El elemento se elimino");
+                    }else{
+                        System.out.println("El árbol esta vaío");
+                    }
                     break;
 
                 case 4:
@@ -69,7 +79,8 @@ public class Test {
                     break;
 
                 case 5:
-
+                    if(abb.vacia())
+                        System.out.println("El arbol esta vacío");
                     break;
 
                 case 6:
@@ -91,6 +102,10 @@ public class Test {
                     break;
 
                 case 9:
+                    System.out.println("Recorrido en postorden converso:");
+                    abb.postordenConverso(abb.root);
+                    System.out.println();
+
                     break;
 
                 case 10:
